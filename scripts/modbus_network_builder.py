@@ -35,7 +35,7 @@ network_obj = {
     "timeout": 0.1,
     "device_timeout_global": 1000,
     "point_timeout_global": 2000,
-    "rtu_port": "/dev/ttyUSB0",
+    "rtu_port": "/dev/ttyUSB2",
     "rtu_speed": 9600,
     "rtu_stop_bits": 1,
     "rtu_parity": "N",
