@@ -66,21 +66,20 @@ def on_message_topic2(mosq, obj, msg):
     port = 1717
 
     try:
-        if not point_val:
-            url = f'http://{ip}:{port}/api/bacnet/points/name/{point_name}'
-            body = {
-                "priority_array_write": {
-                    "_16": point_val
-                },
-            }
-            print(url)
-            print(body)
-            headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-            r_p = requests.patch(f'{url}', data=json.dumps(body), headers=headers)
-            r_json = r_p.json()
-            print(r_json)
-        else:
-            print("ERROR")
+
+        url = f'http://{ip}:{port}/api/bacnet/points/name/{point_name}'
+        body = {
+            "priority_array_write": {
+                "_16": point_val
+            },
+        }
+        print(url)
+        print(body)
+        headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+        r_p = requests.patch(f'{url}', data=json.dumps(body), headers=headers)
+        r_json = r_p.json()
+        print(r_json)
+
 
     except Exception as e:
         print(e)

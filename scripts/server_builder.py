@@ -7,8 +7,9 @@ port = 1717
 url = f'http://{ip}:{port}/api'
 points_url = f'{url}/bacnet/points'
 
-device_count = 50
-device_start_address = 1
+device_count = 32
+# device_count = 50
+device_start_address = 5
 reg_address = [6, 7, 8, 10, 39]
 point_names = ['mode', 'fan_status', 'setpoint', 'temp', 'value_position']
 
