@@ -72,19 +72,17 @@ for d in devices:
         name = reg_names[i]
         point_obj = {
             "name": f'{name}_{d}_{r}',
-            "reg": r,
-            "reg_length": 2,
-            "type": reg_type,
+            "register": r,
+            "register_length": 2,
+            "function_code": reg_type,
             "enable": True,
-            # "write_value": 0,
+            "cov_threshold": 1,
+            "write_value": 0,
             "data_type": data_type,
             "data_endian": "BEB_BEW",
-            "data_round": 22,
-            "data_offset": 2,
-            "timeout": 34,
-            "timeout_global": True,
             "device_uuid": d_uuid
         }
+        # print(point_obj)
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
         r_p = requests.post(f'{points_url}', data=json.dumps(point_obj), headers=headers)
         r_json = r_p.json()
