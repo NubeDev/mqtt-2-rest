@@ -82,8 +82,8 @@ def on_message_topic2(mosq, obj, msg):
         pass
 
 
-main_topic = f'rubix/points/modbus_rtu/+/+/+/+/+/+/data'
-mqttc.subscribe("rubix/points/modbus_rtu/#")
+main_topic = "rubix/points/cov/all/+/+/+/+/+/modbus_rtu"
+mqttc.subscribe("rubix/points/cov/#")
 mqttc.message_callback_add(main_topic, on_message_topic2)
 
 # Run endless loop
