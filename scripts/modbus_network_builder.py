@@ -1,3 +1,5 @@
+import json
+
 import requests
 
 ip = "0.0.0.0"
@@ -83,6 +85,7 @@ for d in devices:
             "timeout_global": True,
             "device_uuid": d_uuid
         }
-        r_p = requests.post(f'{points_url}', data=point_obj)
+        headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+        r_p = requests.post(f'{points_url}', data=json.dumps(point_obj), headers=headers)
         r_json = r_p.json()
         print(r_json)
