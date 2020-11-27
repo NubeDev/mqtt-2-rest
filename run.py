@@ -1,5 +1,4 @@
 import json
-import time
 import paho.mqtt.client as paho
 import requests
 
@@ -53,8 +52,6 @@ def on_message_topic2(mosq, obj, msg):
         except Exception as e:
             print(e)
             pass
-        # point_fault = msg.payload['fault']
-
     #
     print("-------------------------")
     print(point_name)
@@ -65,24 +62,24 @@ def on_message_topic2(mosq, obj, msg):
     ip = "0.0.0.0"
     port = 1717
 
+    try:
+        if point_name is not None:
+            url = f'http://{ip}:{port}/api/bacnet/points/name/{point_name}'
+            body = {
+                "priority_array_write": {
+                    "_16": point_val
+                },
+            }
+            print(url)
+            print(body)
+            headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+            r_p = requests.patch(f'{url}', data=json.dumps(body), headers=headers)
+            r_json = r_p.json()
+            print(r_json)
 
-    if point_name is not None:
-        url = f'http://{ip}:{port}/api/bacnet/points/name/{point_name}'
-        body = {
-            "priority_array_write": {
-                "_16": point_val
-            },
-
-        }
-        print(url)
-        print(body)
-        headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-        r_p = requests.patch(f'{url}', data=json.dumps(body), headers=headers)
-        r_json = r_p.json()
-        print(r_json)
-
-
-
+    except Exception as e:
+        print(e)
+        pass
 
 
 main_topic = f'rubix/points/modbus_rtu/+/+/+/+/+/+/data'
