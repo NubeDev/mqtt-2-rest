@@ -19,6 +19,8 @@ python run.py
 ```
 
 
+# MQTT to REST System D
+
 
 ```
 sudo cp systemd/nubeio-mqtt-2-rest.service /etc/systemd/system/
@@ -34,7 +36,34 @@ sudo systemctl restart nubeio-mqtt-2-rest.service
 ```
 
 
-# Settings config
+##  Settings config
+```
+cp $PWD/settings/config.example.ini  $PWD/settings/config.ini
+nano settings/config.ini
+
+```
+
+
+
+
+# MQTT to REST System D
+
+
+```
+sudo cp systemd/nubeio-mqtt-2-py.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl disable nubeio-mqtt-2-py.service
+sudo systemctl enable nubeio-mqtt-2-py.service
+sudo journalctl -f -u nubeio-mqtt-2-py.service
+sudo systemctl status nubeio-mqtt-2-py.service
+sudo systemctl start nubeio-mqtt-2-py.service
+sudo systemctl stop nubeio-mqtt-2-py.service
+sudo systemctl restart nubeio-mqtt-2-py.service
+
+```
+
+
+##  Settings config
 ```
 cp $PWD/settings/config.example.ini  $PWD/settings/config.ini
 nano settings/config.ini

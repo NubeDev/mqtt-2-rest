@@ -1,0 +1,17 @@
+[Unit]
+Description=NubeIO MQTT to PG Client
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/mqtt-2-rest
+ExecStart=/home/pi/mqtt-2-rest/venv/bin/python run mqtt_to_pg.py
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=mqtt-2-pg
+
+[Install]
+WantedBy=multi-user.target
