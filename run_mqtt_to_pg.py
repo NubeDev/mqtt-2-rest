@@ -20,7 +20,6 @@ broker_timeout = 30
 broker_username = "user"
 broker_password = "password"
 CONNECTION = config.get("pg", "server")
-# CONNECTION = "postgres://postgres:mysecretpassword@postgres.nube-iiot.com:5433/postgres"
 # CONNECTION = "postgres://postgres:postgres@0.0.0.0/bac_rest"
 
 conn = psycopg2.connect(CONNECTION)
