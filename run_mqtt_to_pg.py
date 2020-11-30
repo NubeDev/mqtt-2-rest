@@ -7,7 +7,7 @@ import os
 DEBUG = False
 
 temp_path = os.path.dirname(os.path.abspath(__file__))
-part_config = os.path.join(temp_path, "config.ini")
+part_config = os.path.join(temp_path, "./settings/config.ini")
 config = configparser.ConfigParser()
 config.read(part_config)
 
