@@ -50,15 +50,15 @@ nano settings/config.ini
 
 
 ```
-sudo cp systemd/nubeio-mqtt-2-py.service /etc/systemd/system/
+sudo cp systemd/nubeio-mqtt-2-pg.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl disable nubeio-mqtt-2-py.service
-sudo systemctl enable nubeio-mqtt-2-py.service
-sudo journalctl -f -u nubeio-mqtt-2-py.service
-sudo systemctl status nubeio-mqtt-2-py.service
-sudo systemctl start nubeio-mqtt-2-py.service
-sudo systemctl stop nubeio-mqtt-2-py.service
-sudo systemctl restart nubeio-mqtt-2-py.service
+sudo systemctl disable nubeio-mqtt-2-pg.service
+sudo systemctl enable nubeio-mqtt-2-pg.service
+sudo journalctl -f -u nubeio-mqtt-2-pg.service
+sudo systemctl status nubeio-mqtt-2-pg.service
+sudo systemctl start nubeio-mqtt-2-pg.service
+sudo systemctl stop nubeio-mqtt-2-pg.service
+sudo systemctl restart nubeio-mqtt-2-pg.service
 
 ```
 
