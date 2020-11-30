@@ -34,6 +34,6 @@ sudo systemctl restart nubeio-mqtt-2-rest.service
 # Settings config
 ```
 cp $PWD/settings/config.example.ini  $PWD/settings/config.ini
-
+nano settings/config.ini
 
 ```
