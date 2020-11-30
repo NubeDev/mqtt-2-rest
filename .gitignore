@@ -1,5 +1,6 @@
 
 .idea
+.settings/config.ini
 
 test_raw.txt
 
