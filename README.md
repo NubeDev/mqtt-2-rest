@@ -1,6 +1,9 @@
 # mqtt-2-rest
 
 
+# install issue on PI
+Had to install this
+`sudo apt install libpq5`
 
 
 ```
