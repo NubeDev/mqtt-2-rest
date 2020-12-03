@@ -1,6 +1,20 @@
 # mqtt-2-rest
 
 
+### Running on Production
+
+#### One time setup:
+- Clone [this](https://github.com/NubeIO/common-py-libs)
+- Create `venv` on inside that directory (follow instruction on [here](https://github.com/NubeIO/common-py-libs#how-to-create))
+
+#### Commands:
+```bash
+sudo bash script.bash start -u=<pi|debian> -dir=<s-mon_dir> -lib_dir=<common-py-libs-dir>
+sudo bash script.bash start -u=pi -dir=/home/pi/mqtt-2-rest -lib_dir=/home/pi/common-py-libs
+sudo bash script.bash -h
+```
+
+
 # install issue on PI
 Had to install this
 `sudo apt install libpq5`
