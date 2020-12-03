@@ -72,10 +72,7 @@ def on_message_topic2(mosq, obj, msg):
         pass
 
 
-"rubix/points/cov/all/ec6cf0a5-95b9-47c0-bd2f-927331ef23ff/mode_18_6/1177f4f8-b229-41c8-92b3-3a259a7f2fc9/device_18/fd663f30-06f9-436c-851f-693a5a34011c/mod_network_name hey/modbus_rtu"
-"rubix/points/cov/all/+/mode_18_6/+/device_18/+/+/modbus_rtu"
-# main_topic = "rubix/points/cov/all/#"
-main_topic = "rubix/points/cov/all/+/+/+/+/+/+/modbus_rtu"
+main_topic = "rubix/points/cov/all/+/+/+/+/+/+/modbus"
 mqttc.subscribe("rubix/points/cov/all/#")
 mqttc.message_callback_add(main_topic, on_message_topic2)
 
