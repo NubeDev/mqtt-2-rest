@@ -2,18 +2,17 @@ import json
 
 import requests
 
-ip = "0.0.0.0"
-port = 1515
+ip = "123.209.89.104"
+port = 1513
 
 url = f'http://{ip}:{port}/api'
 network_url = f'{url}/modbus/networks'
 devices_url = f'{url}/modbus/devices'
-devices = (5, 6, 7)
-# devices = (5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31)
+devices = (5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25)
 reg_type = "READ_HOLDING_REGISTERS"
 data_type = "RAW"
 points_url = f'{url}/modbus/points'
-reg_address = [6, 7, 8, 10, 39]
+reg_address = [7, 8, 9, 11, 40]
 reg_names = ['mode', 'fan_status', 'setpoint', 'temp', 'value_position']
 
 # test device
@@ -33,7 +32,7 @@ network_obj = {
     "name": "mod_network_name hey",
     "type": "RTU",
     "enable": True,
-    "timeout": 0.1,
+    "timeout": 0.15,
     "device_timeout_global": 1,
     "point_timeout_global": 1,
     "rtu_port": "/dev/ttyUSB2",
@@ -60,7 +59,7 @@ for d in devices:
         "ping_point_type": "mod_ping_point_type",
         "ping_point_address": 1,
         "zero_mode": False,
-        "timeout": 123,
+        "timeout": 1,
         "timeout_global": False,
         "network_uuid": network_uuid
     }
@@ -74,10 +73,10 @@ for d in devices:
         point_obj = {
             "name": f'{name}_{d}_{r}',
             "register": r,
-            "register_length": 2,
+            "register_length": 1,
             "function_code": reg_type,
             "enable": True,
-            "cov_threshold": 1,
+            "cov_threshold": 0.1,
             "write_value": 0,
             "data_type": data_type,
             "data_endian": "BEB_BEW",

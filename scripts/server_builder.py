@@ -7,11 +7,12 @@ port = 1717
 url = f'http://{ip}:{port}/api'
 points_url = f'{url}/bacnet/points'
 
-device_count = 32
+device_count = 27
 # device_count = 50
 device_start_address = 5
-reg_address = [6, 7, 8, 10, 39]
+reg_address = [7, 8, 9, 11, 40]
 point_names = ['mode', 'fan_status', 'setpoint', 'temp', 'value_position']
+sensors = ['6CB2D00C', '1BB20919', ]
 
 is_looping = True
 for i in range(device_count):
@@ -44,7 +45,7 @@ for i in range(device_count):
                 "_15": None,
                 "_16": None
             },
-            "event_state": "lowLimit",
+            "event_state": "normal",
             "units": "noUnits",
             "description": "description",
             "enable": True,
