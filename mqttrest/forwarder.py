@@ -16,7 +16,7 @@ def ip_addresses():
 
 
 class Forwarder(object):
-    ''' Listenes to MQTT topics and posts to REST endpoints '''
+    """ Listenes to MQTT topics and posts to REST endpoints """
 
     def __init__(self, path='config.json'):
         self.config = mqttrest.config.Config(path)
@@ -25,7 +25,7 @@ class Forwarder(object):
         self.defective_clients = []
 
     def connect(self):
-        ''' connect all configured brokers and subscribe to the given topics '''
+        """ connect all configured brokers and subscribe to the given topics """
         for route in self.config.routes:
             # init client with callbacks
             client = mqtt.Client(userdata=route)
@@ -54,13 +54,13 @@ class Forwarder(object):
                 self.defective_clients.append(client)
 
     def start(self):
-        ''' Start all clients that where connected successfully '''
+        """ Start all clients that where connected successfully """
         for client in self.clients:
             client.loop_start()
             self.running_clients.append(client)
 
     def stop(self):
-        ''' Stop all running clients '''
+        """ Stop all running clients """
         logging.info('disconnecting clients')
         for client in self.clients:
             client.disconnect()
