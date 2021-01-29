@@ -90,6 +90,7 @@ def on_message(client, userdata, message):
         protocol_in = endpoint.details["protocol_in"]
         protocol_out = endpoint.details["protocol_out"]
         json_payload = None
+        # todo need to a check to stop an infinite loop of message in/out
         if protocol_in == 'bacnet_server':
             json_payload = float(message.payload)
         elif protocol_in == 'generic':
