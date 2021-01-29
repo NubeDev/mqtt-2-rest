@@ -1,3 +1,5 @@
+import json
+
 import mqttrest.config
 import paho.mqtt.client as mqtt
 import requests
@@ -85,9 +87,15 @@ def on_message(client, userdata, message):
     for endpoint in userdata.endpoints:
         logging.debug('Message for %s: %s' % (endpoint.url, message.payload))
         kw = endpoint.requests_params
-        kw['data'] = message.payload
+        json_payload = json.loads(message.payload)
+        bacnet = {
+            "priority_array_write": {
+                "_16": json_payload["value"]
+            }}
+
+        kw['json'] = bacnet
         try:
-            requests.post(**kw)
+            requests.patch(**kw)
         except Exception as err:
             logging.error('Post failed for endpoint: %s' % endpoint.url)
             logging.exception(err)

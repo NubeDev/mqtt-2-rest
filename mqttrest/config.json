@@ -1,4 +1,4 @@
 {"routes":[
-    {"broker":"127.0.0.1:1883","topic":"hello/world","endpoint":"http://127.0.0.1:1880/hello-json"},
-    {"broker":"127.0.0.1:1883","topic":"hello/world2","endpoint":"http://127.0.0.1:1880/ep2"}]
+    {"protocol_in":"generic","protocol_out":"bacnet_server","broker":"192.168.15.7:1883","topic":"rubix/points/value/cov/all/aebed7c1-de2b-4302-889b-0c61b9d30cae/test/101d38aa-9274-4c9c-99e7-5fa26cbae76b/test/a8053808-bdc3-42f7-bb32-8a91110c5a64/test/generic","endpoint":"http://192.168.15.7:1717/api/bacnet/points/uuid/12b060a5-7a57-43f6-8924-4f8016a4f252"},
+    {"protocol_in":"generic","protocol_out":"bacnet_server","broker":"192.168.15.7:1883","topic":"hello/world2","endpoint":"http://192.168.15.7:1717/api/bacnet/points/uuid/e9bbf6fb-6dd5-4c5a-85d6-c1dc33e20c69"}]
 }
