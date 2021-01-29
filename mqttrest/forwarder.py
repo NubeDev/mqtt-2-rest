@@ -87,13 +87,25 @@ def on_message(client, userdata, message):
     for endpoint in userdata.endpoints:
         logging.debug('Message for %s: %s' % (endpoint.url, message.payload))
         kw = endpoint.requests_params
-        json_payload = json.loads(message.payload)
-        bacnet = {
-            "priority_array_write": {
-                "_16": json_payload["value"]
-            }}
-
-        kw['json'] = bacnet
+        protocol_in = endpoint.details["protocol_in"]
+        protocol_out = endpoint.details["protocol_out"]
+        json_payload = None
+        if protocol_in == 'bacnet_server':
+            json_payload = float(message.payload)
+        elif protocol_in == 'generic':
+            json_payload = json.loads(message.payload)
+        if protocol_out == 'bacnet_server':
+            body = {
+                "priority_array_write": {
+                    "_16": json_payload["value"]
+                }}
+            kw['json'] = body
+        elif protocol_out == 'generic':
+            body = {
+                "value": json_payload
+            }
+            kw['json'] = body
+        print({"body": body, "json_payload": json_payload})
         try:
             requests.patch(**kw)
         except Exception as err:

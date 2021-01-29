@@ -4,8 +4,9 @@ import json
 class Endpoint(object):
     """ REST-Endpoint with or without credentials """
 
-    def __init__(self, url, user=None, pw=None):
+    def __init__(self, url, details, user=None, pw=None):
         self.url = url
+        self.details = details
         self.requests_params = {'url': self.url}
         if (user is not None) and (pw is not None):
             self.creds = (user, pw)
@@ -37,11 +38,20 @@ class Config(object):
         route_merger = {}
         for pair in pairs:
             broker = pair['broker']
+            protocol_in = pair['protocol_in']
+            protocol_out = pair['protocol_out']
             topic = pair['topic']
             key = broker + 'justmakingsure' + topic
             route_merger[key] = route_merger.get(key, Route(broker=broker, topic=topic))
+            details = {
+                'broker': broker,
+                'endpoint': pair['endpoint'],
+                'topic': topic,
+                'protocol_in': protocol_in,
+                'protocol_out': protocol_out
+            }
             endpoint = Endpoint(url=pair['endpoint'],
-                                user=pair.get('endpoint_user', None),
+                                details=details,
                                 pw=pair.get('endpoint_pw', None))
             route_merger[key].endpoints.append(endpoint)
         self.routes = [r for r in route_merger.values()]
